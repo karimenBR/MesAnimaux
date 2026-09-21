@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Espace admin — MES ANIMEAUX</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="admin-body">
+
+<div id="loginGate" class="login-screen">
+  <div class="login-card">
+    <span class="eyebrow">Accès privé</span>
+    <h2>Espace admin</h2>
+    <p>Réservé à l'équipe MES ANIMEAUX.</p>
+    <form id="loginForm">
+      <div class="field">
+        <label for="loginPass">Mot de passe</label>
+        <input type="password" id="loginPass" required autofocus>
+      </div>
+      <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Entrer</button>
+      <p id="loginErr" style="color:var(--rust);font-size:13.5px;margin-top:10px;"></p>
+    </form>
+    <p style="font-size:12px;color:var(--ink-soft);margin-top:18px;">Mot de passe par défaut : <b>admin123</b> — changez-le dans l'onglet Paramètres après connexion.</p>
+  </div>
+</div>
+
+<div id="dashboard" class="admin-shell" style="display:none;">
+  <div class="admin-topbar">
+    <div class="brand2">🐾 MES ANIMEAUX <span class="badge">Admin</span></div>
+    <button class="logout-btn" id="logoutBtn">Se déconnecter</button>
+  </div>
+
+  <div class="tabs">
+    <button class="tab-btn active" data-tab="products">Produits</button>
+    <button class="tab-btn" data-tab="bookings">Rendez-vous</button>
+    <button class="tab-btn" data-tab="settings">Paramètres</button>
+  </div>
+
+  <!-- ---------------- PRODUCTS TAB ---------------- -->
+  <div id="tab-products" class="tab-panel">
+    <div class="panel-card" style="margin-bottom:24px;">
+      <h3 id="formTitle">Ajouter un produit</h3>
+      <p style="font-size:13.5px;">Glissez-déposez une photo, remplissez les infos, et le produit apparaît aussitôt dans la boutique.</p>
+      <div class="panel-grid">
+        <div>
+          <div class="dropzone" id="dropzone">
+            <span>Glissez une image ici<br>ou cliquez pour choisir</span>
+          </div>
+          <input type="file" id="fileInput" accept="image/*" style="display:none;">
+        </div>
+        <form id="productForm">
+          <input type="hidden" id="editId" name="editId">
+          <div class="field">
+            <label for="pName">Nom du produit</label>
+            <input type="text" id="pName" name="name" required>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="pCategory">Catégorie</label>
+              <select id="pCategory" name="category" required>
+                <option>Alimentation</option>
+                <option>Accessoires</option>
+                <option>Hygiène</option>
+                <option>Jouets</option>
+                <option>Autres</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="pPrice">Prix (TND)</label>
+              <input type="number" id="pPrice" name="price" step="0.1" min="0" required>
+            </div>
+          </div>
+          <div class="field">
+            <label for="pDesc">Description</label>
+            <textarea id="pDesc" name="description" placeholder="Une ou deux phrases pour vos clients"></textarea>
+          </div>
+          <div class="checkbox-row">
+            <input type="checkbox" id="pStock" name="stock" checked>
+            <label for="pStock" style="margin:0;">En stock (visible comme disponible)</label>
+          </div>
+          <div style="display:flex;gap:10px;">
+            <button type="submit" id="saveBtn" class="btn btn-primary">Ajouter à la boutique</button>
+            <button type="button" id="resetFormBtn" class="btn btn-outline">Annuler</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="panel-card">
+      <h3>Catalogue actuel</h3>
+      <p style="font-size:13px;">Glissez les fiches pour changer leur ordre d'affichage dans la boutique.</p>
+      <div class="product-list" id="productList"></div>
+    </div>
+  </div>
+
+  <!-- ---------------- BOOKINGS TAB ---------------- -->
+  <div id="tab-bookings" class="tab-panel" style="display:none;">
+    <div class="panel-card">
+      <h3>Rendez-vous toilettage</h3>
+      <div class="date-bar">
+        <div class="field" style="margin:0;">
+          <label for="adminDate">Date</label>
+          <input type="date" id="adminDate">
+        </div>
+        <span class="slot-hint" id="capacityNote" style="margin:0;"></span>
+      </div>
+      <div id="bookingsList"></div>
+    </div>
+  </div>
+
+  <!-- ---------------- SETTINGS TAB ---------------- -->
+  <div id="tab-settings" class="tab-panel" style="display:none;">
+    <div class="panel-card" style="margin-bottom:24px;">
+      <h3>Informations du magasin</h3>
+      <form id="settingsForm">
+        <div class="field-row">
+          <div class="field"><label>Nom</label><input name="shopName" required></div>
+          <div class="field"><label>Slogan</label><input name="tagline"></div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label>Téléphone</label><input name="phone" required></div>
+          <div class="field"><label>Email</label><input name="email" type="email"></div>
+        </div>
+        <div class="field"><label>Adresse</label><input name="address"></div>
+        <div class="field"><label>Lien Google Maps</label><input name="mapsUrl"></div>
+        <h3 style="margin-top:26px;">Toilettage</h3>
+        <div class="field-row">
+          <div class="field"><label>Postes disponibles</label><input name="stations" type="number" min="1" max="10" required></div>
+          <div class="field"><label>Durée d'un créneau (min)</label><input name="slotDurationMin" type="number" min="15" step="5" required></div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label>Heure d'ouverture (ex: 9)</label><input name="slotStartHour" type="number" min="0" max="23" step="0.5" required></div>
+          <div class="field"><label>Heure de fermeture (ex: 20)</label><input name="slotEndHour" type="number" min="0" max="23" step="0.5" required></div>
+        </div>
+        <button type="submit" class="btn btn-primary">Enregistrer</button>
+        <span id="settingsMsg" style="margin-left:12px;color:var(--pine-light);font-weight:600;font-size:13.5px;"></span>
+      </form>
+    </div>
+
+    <div class="panel-card">
+      <h3>Changer le mot de passe admin</h3>
+      <form id="passwordForm">
+        <div class="field"><label for="newPassword">Nouveau mot de passe</label><input type="text" id="newPassword" name="newPassword" required minlength="4"></div>
+        <button type="submit" class="btn btn-dark">Mettre à jour</button>
+        <span id="pwMsg" style="margin-left:12px;color:var(--pine-light);font-weight:600;font-size:13.5px;"></span>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script src="js/db.js"></script>
+<script src="js/booking.js"></script>
+<script src="js/admin.js"></script>
+<script>initLogin();</script>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MES ANIMEAUX — Animalerie & toilettage canin à Monastir</title>
+<meta name="description" content="Animalerie MES ANIMEAUX : alimentation, accessoires et toilettage pour chiens et chats à Monastir. Réservez votre bain en ligne.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow" style="color:#E8A33D;">Animalerie de quartier · Monastir</span>
+      <h1>Tout pour le bonheur de <em>votre compagnon</em>, sous un même toit.</h1>
+      <p>Croquettes, accessoires, hygiène et jouets sélectionnés avec soin et un espace toilettage où l'on chouchoute votre chien de la tête à la queue.</p>
+      <div class="hero-actions">
+        <a href="boutique.html" class="btn btn-primary">Voir la boutique</a>
+        <a href="toilettage.html#booking-form" class="btn btn-ghost">Réserver un bain 🐾</a>
+      </div>
+    </div>
+    <div class="hero-tag">
+      <div class="tag-label">Station toilettage</div>
+      <div class="tag-value" id="heroStations"> postes</div>
+      <div class="tag-sub">disponibles chaque jour, sur rendez-vous en ligne</div>
+    </div>
+  </div>
+  <svg class="wave" viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,32 C240,60 480,0 720,20 C960,40 1200,60 1440,28 L1440,60 L0,60 Z" fill="#F6F0E4"/></svg>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Nos services</span>
+      <h2>Une animalerie complète, un toilettage sur-mesure.</h2>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <svg class="icon" viewBox="0 0 24 24" fill="none"><path d="M4 12a8 8 0 1116 0 8 8 0 01-16 0z" stroke="currentColor" stroke-width="1.6"/><path d="M9 12h6M12 9v6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        <h3>Alimentation & soins</h3>
+        <p>Croquettes, pâtées et compléments choisis pour chaque âge, taille et sensibilité.</p>
+      </div>
+      <div class="card">
+        <svg class="icon" viewBox="0 0 24 24" fill="none"><path d="M12 3v18M3 12h18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/></svg>
+        <h3>Accessoires & jouets</h3>
+        <p>Laisses, paniers, griffoirs, jouets d'éveil pour la maison comme pour la balade.</p>
+      </div>
+      <div class="card">
+        <svg class="icon" viewBox="0 0 24 24" fill="none"><path d="M4 12a8 8 0 1116 0" stroke="currentColor" stroke-width="1.6"/><path d="M4 12v4M20 12v4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        <h3>Toilettage canin</h3>
+        <p>Bain, brossage et finitions dans un espace dédié, réservation en ligne avec créneaux en temps réel.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">La boutique</span>
+      <h2>Sélection du moment</h2>
+    </div>
+    <div class="product-grid" id="featuredGrid"></div>
+    <div style="text-align:center;margin-top:36px;">
+      <a href="boutique.html" class="btn btn-outline">Voir tout le catalogue</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap split">
+    <div>
+      <span class="eyebrow">À propos</span>
+      <h2>Une équipe qui connaît vos animaux par leur nom.</h2>
+      <p>MES ANIMEAUX est une animalerie de quartier à Monastir. On y vient pour les croquettes, on revient pour les conseils — et on réserve le bain de son chien sans faire la queue au téléphone.</p>
+      <div class="stat-row">
+        <div class="stat"><b>2</b><span>Postes toilettage</span></div>
+        <div class="stat"><b>6j/7</b><span>Ouvert</span></div>
+        <div class="stat"><b>100%</b><span>Conseils sincères</span></div>
+      </div>
+    </div>
+    <div class="img-fill" style="background:linear-gradient(135deg,var(--sage),var(--paper));aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;">
+      <svg width="120" height="120" viewBox="0 0 48 48" fill="var(--cream)"><circle cx="24" cy="30" r="10"/><circle cx="10" cy="18" r="6"/><circle cx="38" cy="18" r="6"/><circle cx="16" cy="8" r="5"/><circle cx="32" cy="8" r="5"/></svg>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--pine-light);color:var(--paper);">
+  <div class="wrap" style="display:grid;grid-template-columns:1.2fr .8fr;gap:48px;align-items:center;">
+    <div>
+      <span class="eyebrow" style="color:#E8A33D;">Nous rendre visite</span>
+      <h2 style="color:#fff;">Passez nous voir</h2>
+      <p style="color:#D9E4DE;" id="addrText"></p>
+      <ul class="hours-list" id="hoursListHome" style="max-width:340px;"></ul>
+      <a href="#" id="mapsLinkHome" target="_blank" rel="noopener" class="btn btn-primary" style="margin-top:18px;">Itinéraire Google Maps</a>
+    </div>
+    <div class="map-frame">
+      <iframe id="mapEmbed" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9165.242178978457!2d10.850447198365176!3d35.69171287621421!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1302122ca0b5a92f%3A0x9274b5b2b69d32b2!2sAnimalerie%20MES%20ANIMEAUX!5e0!3m2!1sen!2stn!4v1784285880796!5m2!1sen!2stn" width="100%" height="280" style="border:0;" loading="lazy" allowfullscreen="" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    </div>
+  </div>
+</section>
+
+<script src="js/db.js"></script>
+<script src="js/main.js"></script>
+<script src="js/shop.js"></script>
+<script>
+  SITE.buildHeader('index.html');
+  SITE.buildFooter();
+  renderFeatured();
+
+  const s = DB.getSettings();
+  document.getElementById('heroStations').textContent = s.stations + (s.stations>1 ? ' postes' : ' poste');
+  document.getElementById('addrText').textContent = s.address;
+  document.getElementById('mapsLinkHome').href = s.mapsUrl;
+  document.getElementById('hoursListHome').innerHTML = s.hours.map(h=>
+    `<li><span style="color:#D9E4DE;">${h.day}</span><b style="color:#fff;">${h.time}</b></li>`).join('');
+</script>
+</body>
+</html>

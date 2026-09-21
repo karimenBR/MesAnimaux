@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Boutique — MES ANIMEAUX</title>
+<meta name="description" content="Toute la gamme MES ANIMEAUX : alimentation, accessoires, hygiène et jouets pour chiens et chats.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<section style="padding-top:56px;padding-bottom:40px;">
+  <div class="wrap">
+    <span class="eyebrow">Catalogue</span>
+    <h1 style="color:var(--pine);font-size:clamp(30px,4vw,44px);">La boutique</h1>
+    <p style="max-width:60ch;">Chaque référence est choisie par l'équipe dites-nous ce qu'il manque, on s'en occupe.</p>
+  </div>
+</section>
+
+<section style="padding-top:0;">
+  <div class="wrap">
+    <div class="filters" id="filterBar"></div>
+    <div class="product-grid" id="shopGrid"></div>
+  </div>
+</section>
+
+<script src="js/db.js"></script>
+<script src="js/main.js"></script>
+<script src="js/shop.js"></script>
+<script>
+  SITE.buildHeader('boutique.html');
+  SITE.buildFooter();
+  renderShop();
+</script>
+</body>
+</html>

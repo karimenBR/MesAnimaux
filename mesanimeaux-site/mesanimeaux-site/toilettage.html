@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Toilettage & réservation — MES ANIMEAUX</title>
+<meta name="description" content="Réservez un bain ou un toilettage pour votre chien chez MES ANIMEAUX, avec disponibilité en temps réel.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<section style="padding-top:56px;padding-bottom:30px;">
+  <div class="wrap">
+    <span class="eyebrow">Toilettage canin</span>
+    <h1 style="color:var(--pine);font-size:clamp(30px,4vw,44px);">Réservez le bain de votre chien</h1>
+    <p style="max-width:60ch;">Choisissez une date, un créneau libre et le service souhaité. Vous recevez un code pour suivre votre rendez-vous.</p>
+  </div>
+</section>
+
+<section id="booking-form" style="padding-top:0;">
+  <div class="wrap">
+    <div class="booking-shell">
+      <div class="booking-form">
+        <form id="bookingForm">
+          <div class="field">
+            <label>Type de service</label>
+            <div class="service-options">
+              <div class="service-opt" data-name="Bain simple" data-price="20">
+                <b>Bain simple</b><span>20 TND</span>
+              </div>
+              <div class="service-opt" data-name="Bain + brossage" data-price="30">
+                <b>Bain + brossage</b><span>30 TND</span>
+              </div>
+              <div class="service-opt" data-name="Toilettage complet" data-price="45">
+                <b>Toilettage complet</b><span>45 TND</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="bookDate">Date</label>
+            <input type="date" id="bookDate" required>
+          </div>
+
+          <div class="field">
+            <label>Créneau horaire</label>
+            <div class="slot-grid" id="slotGrid"></div>
+            <div class="slot-hint" id="slotHint"></div>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="ownerName">Votre nom</label>
+              <input type="text" id="ownerName" name="ownerName" required>
+            </div>
+            <div class="field">
+              <label for="phone">Téléphone</label>
+              <input type="tel" id="phone" name="phone" required placeholder="20 000 000">
+            </div>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="petName">Nom du chien</label>
+              <input type="text" id="petName" name="petName" required>
+            </div>
+            <div class="field">
+              <label for="petType">Animal</label>
+              <select id="petType" name="petType">
+                <option>Chien</option>
+                <option>Chat</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="notes">Remarques (facultatif)</label>
+            <textarea id="notes" name="notes" placeholder="Race, comportement, allergies…"></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Confirmer la réservation</button>
+          <div id="bookingMsg"></div>
+        </form>
+      </div>
+      <div class="booking-side">
+        <span class="eyebrow" style="color:#E8A33D;">Comment ça marche</span>
+        <h3>3 étapes simples</h3>
+        <ul>
+          <li><b>01</b> Choisissez une date et un créneau encore libre.</li>
+          <li><b>02</b> Remplissez vos coordonnées et celles de votre chien.</li>
+          <li><b>03</b> Recevez un code de suivi — présentez-le à l'arrivée.</li>
+        </ul>
+        <p style="margin-top:26px;font-size:13px;opacity:.8;">Les créneaux se mettent à jour en direct selon le nombre de postes de toilettage disponibles.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--paper);border-top:1px solid var(--line);">
+  <div class="wrap" style="max-width:640px;">
+    <div class="section-head">
+      <span class="eyebrow">Suivi</span>
+      <h2>Vérifier mon rendez-vous</h2>
+    </div>
+    <div class="lookup-box">
+      <form id="lookupForm">
+        <div class="field-row">
+          <div class="field">
+            <label for="lkPhone">Téléphone</label>
+            <input type="tel" id="lkPhone" name="phone" required>
+          </div>
+          <div class="field">
+            <label for="lkCode">Code de suivi</label>
+            <input type="text" id="lkCode" name="code" required placeholder="ex: A1B2C3">
+          </div>
+        </div>
+        <button type="submit" class="btn btn-dark">Vérifier le statut</button>
+      </form>
+      <div id="lookupResult"></div>
+    </div>
+  </div>
+</section>
+
+<script src="js/db.js"></script>
+<script src="js/main.js"></script>
+<script src="js/booking.js"></script>
+<script>
+  SITE.buildHeader('toilettage.html');
+  SITE.buildFooter();
+  initBookingPage();
+  initLookup();
+</script>
+</body>
+</html>
